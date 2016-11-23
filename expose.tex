@@ -11,6 +11,22 @@
 
 \usepackage[french]{babel}
 \usepackage[utf8x]{inputenc}
+\usepackage{metalogo}
+\usepackage{harmony}
+\usepackage{minted}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[version=3]{mhchem}
+
+\lstset
+{
+    language=[LaTeX]TeX,
+    breaklines=true,
+    basicstyle=\tt\scriptsize,
+    keywordstyle=\color{blue},
+    identifierstyle=\color{magenta}
+}
 
 \title{\LaTeX}
 \author{Quentin Ladeveze -- François Lallemand}
@@ -25,11 +41,113 @@
 \begin{frame}{Qu'est ce que c'est ?}
 
 \begin{itemize}
-    \item Un logiciel de composition de documents créé en 1977.
+    \item \TeX : Un logiciel de composition de documents créé en 1977.
     \item Très utilisé dans le monde académique.
+    \item Plusieurs variantes modernes: \LaTeX, \XeTeX, \LuaTeX avec chacun leurs avantages (formules, classes  de document, UTF-8)
 \end{itemize}
 
 \end{frame}
 
+\begin{frame}[fragile]{Les possibilités}
+
+\begin{itemize}
+    \item Les formules mathématiques : $\sum_{n=1}^{+\infty}\frac{1}{n^2}=\frac{\pi^2}{6}$
+    \item Les formules chimiques :\ce{A <=> B ^ + C v}
+    \item La musique : \ZwPa, \Halb, \AAcht
+\end{itemize}
+
+\vfill
+
+\begin{minipage}[t]{0.48\linewidth}
+    La coloration syntaxique
+    \fontsize{8pt}{8pt}\selectfont
+    \hfill
+    \vfill
+    \begin{minted}[mathescape,
+        linenos,
+        numbersep=5pt,
+        gobble=2,
+        frame=lines,
+        framesep=2mm]{java}
+    // Intégration de formules : $\pi=\lim_{n\to\infty}\frac{P_n}{d}$
+    void test(int a){
+        System.out.println("valeur : ", a);
+    }
+    \end{minted}
+    \vfill
+    \hfill
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \hspace{60pt}
+    Les graphes
+    \vspace{40pt}
+    \hfill
+    \begin{tikzpicture}
+    \node (P) at (0,0) {Paris};
+    \node (S) at (1.6, -1) {Strasbourg};
+    \node (L) at (1,1) {Lille};
+    \draw[->,>=latex] (P) to[bend right] (L);
+    \draw[->,>=latex] (L) to[bend left] (S);
+    \draw[->,>=latex] (S) to[bend left] (P);
+    \end{tikzpicture}
+    \hfill
+    \vfill
+\end{minipage}
+
+\end{frame}
+
+\begin{frame}{Les possibilités}
+    \begin{itemize}
+        \item \LaTeX \hspace{2pt}gère une grande variété de documents : carte de visite, présentation, mémoire, rapport et beaucoup d'autres.
+        \item Possibilité d'exporter dans de nombreux formats : pdf, epub, html+css, dvi
+        \item On peut créer des documents \LaTeX \hspace{2pt}avec n'importe quel éditeur de texte, ou avec un IDE prévu à cet effet. On peut créer un documents de dix mille pages sans problèmes.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Le code}
+    \begin{itemize}
+        \item On cite souvent \TeX \hspace{2pt}comme étant le programme le moins buggé du monde.
+        \item Créé en 1977 et très peu modifié depuis.
+        \item Les variantes de \TeX \hspace{2pt}sont justes des ensembles de scripts pour faciliter son utilisation.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Exemple}
+
+Cet exemple de \LaTeX permet de réaliser le graphe entre Paris, Strasbourg et Lille que l'on a vu dans un des transparents précédents.
+\vfill
+\begin{lstlisting}
+    \documentclass{article}
+    \usepackage{tikz}
+    \begin{document}
+        \begin{tikzpicture}
+            \node (P) at (0,0) {Paris};
+            \node (S) at (1.6, -1) {Strasbourg};
+            \node (L) at (1,1) {Lille};
+            \draw[->,>=latex] (P) to[bend right] (L);
+            \draw[->,>=latex] (L) to[bend left] (S);
+            \draw[->,>=latex] (S) to[bend left] (P);
+        \end{tikzpicture}
+    \end{document}
+\end{lstlisting}
+\vfill
+\end{frame}
+
+\begin{frame}{Les désavantages}
+    \begin{itemize}
+        \item La courbe d'apprentissage peut être un peu rude
+        \item Quand on modifie son document, on ne voit pas immédiatement ces modifications.
+        \item Partager un document \textit{modifiable} peut être un peu compliqué si notre interlocuteur ne connait pas \LaTeX (cf. point 1)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Conclusion}
+    \begin{itemize}
+        \item \TeX et ses variantes sont un ensemble de logiciels puissants et complet qui permettent de réaliser n'importe quel document.
+        \item Ils sont également flexibles que ce soit dans la façon de les écrire ou dans les sorties qu'ils produisent.
+        \item Apprendre à utiliser \LaTeX est investissement qui peut paraitre lourd au premier abord mais qui nous affranchit de Word, PowerPoint et de tout un tas de saloperies pour toujours.
+    \end{itemize}
+\end{frame}
 \end{document}
 
